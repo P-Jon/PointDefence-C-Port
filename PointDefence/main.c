@@ -1,8 +1,25 @@
 #include "raylib.h"
+#include "game_data.h"
+
+// This acts as the game manager, which will handle logic involving 
+
+void setup_game_window(){
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Point Defence Game");
+    SetTargetFPS(60);
+    HideCursor();
+    // SetWindowIcon 
+}
+
+void quit_game(){
+    // Reset GameData
+    // Reset Player Stats
+    // ...etc
+    CloseWindow();
+}
 
 int main(void)
 {
-    InitWindow(800, 450, "raylib [core] example - basic window");
+    setup_game_window();
 
     while (!WindowShouldClose())
     {
