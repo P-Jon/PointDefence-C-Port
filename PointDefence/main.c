@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "game_data.h"
+#include "pd_core.h"
 
 // This acts as the game manager, which will handle logic involving 
 
@@ -21,13 +21,7 @@ int main(void)
 {
     setup_game_window();
 
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
-    }
+    game_loop();
 
     CloseWindow();
 
