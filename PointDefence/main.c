@@ -1,4 +1,3 @@
-#include "raylib.h"
 #include "pd_core.h"
 
 // This acts as the game manager, which will handle logic involving 

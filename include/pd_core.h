@@ -1,16 +1,18 @@
 #ifndef PD_CORE_
 #define PD_CORE_
 
+#include "raylib.h"
+
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
 /* ANIMATION DATA */
-typedef struct AnimatedObject {
+typedef struct AnimationHandler {
     Texture2D *frames;
     float frameTime;
     int numberOfFrames;
     int currentFrame;
-} AnimatedObject;
+} AnimationHandler;
 
 /* PLAYER & GAME DATA */
 typedef struct GameData {
@@ -21,6 +23,12 @@ typedef struct GameData {
 } GameData;
 
 typedef struct Player {
+    struct AnimationHandler animationHandler;
+    double time;
+    bool reloading;
+
+    Vector2 position;
+
     int health;
     int ammo;
     long score;
@@ -28,6 +36,7 @@ typedef struct Player {
 
 /* MISSILE DATA */
 typedef struct Missile {
+    struct AnimationHandler animationHandler;
     double time;
     Vector2 target;
     float targetYDistance;
@@ -36,13 +45,12 @@ typedef struct Missile {
     float roatation;
 } Missile;
 
-
 /* FUNCTIONS */
 void game_loop();
 
 void reset_data();
 
-void reset_player_data();
+void reset_player_data(Player *player);
 
 void draw();
 void update();
