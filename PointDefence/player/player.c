@@ -34,7 +34,7 @@ void reload(Player *player){
         player->ammo += 1;
     } 
     else if (player->ammo >= 100){
-        player->score -= 20;
+        player->score = (player->score - 20 <= 0) ? 0 : player->score - 20;
         // Stop Reloading Sound
         // Play reloaded sound
         player->reloading = false;
@@ -55,5 +55,8 @@ void player_update(Player *player){
 }
 
 void player_draw(Player *player){
+    int currentFrame = player->animationHandler.currentFrame;
     
+    DrawTextureEx(player->animationHandler.frames[currentFrame], 
+                 (Vector2){player->position.x, player->position.y}, 0, 1.0f, WHITE);
 }
