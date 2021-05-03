@@ -1,6 +1,7 @@
 #include "pd_core.h"
 
-// This acts as the game manager, which will handle logic involving 
+// This acts as the game manager, which will handle logic involving starting the game,
+// restarting it and wrapping things up.
 
 void setup_game_window(){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Point Defence Game");

@@ -11,3 +11,49 @@ void reset_player_data(Player *player){
     player->ammo = 100;
     player->score = 100; 
 }
+
+void handle_player_input(Player *player){
+    // Mouse Input
+    if (player->reloading != true && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        player->ammo -= 5;
+        // Instantiate Missile at Position
+        // Play sound
+    }
+
+    // Keyboard Input
+    if (player->reloading == true && IsKeyPressed(KEY_R)){
+        player->time = GetTime();
+        // Play Sound
+        player->reloading = true;
+    }
+}
+
+void reload(Player *player){
+    if (player->ammo != 100 && GetTime() >= player->time + 0.05f){
+        player->time = GetTime();
+        player->ammo += 1;
+    } 
+    else if (player->ammo >= 100){
+        player->score -= 20;
+        // Stop Reloading Sound
+        // Play reloaded sound
+        player->reloading = false;
+    }
+}
+
+void player_update(Player *player){
+    handle_player_input(player);
+
+    if (player->ammo <= 0){
+        player->reloading = true;
+        // Play sound
+    }
+
+    if (player->reloading){
+        reload(player);
+    }
+}
+
+void player_draw(Player *player){
+    
+}
