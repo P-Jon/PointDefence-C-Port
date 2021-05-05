@@ -45,6 +45,11 @@ typedef struct Missile {
     float roatation;
 } Missile;
 
+/* */
+typedef struct Explosion {
+    Vector2 position;
+} Explosion;
+
 /* FUNCTIONS */
 void game_loop();
 
