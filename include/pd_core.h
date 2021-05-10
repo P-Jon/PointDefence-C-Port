@@ -6,6 +6,8 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
+#define DEBUG_MODE true
+
 /* ANIMATION DATA */
 typedef struct AnimationHandler
 {
@@ -60,6 +62,8 @@ void game_loop();
 
 void reset_data();
 
+// Player Functions
+Player *instantiate_player();
 void reset_player_data(Player *player);
 
 void draw();

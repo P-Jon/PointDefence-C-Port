@@ -3,8 +3,8 @@
 
 void game_loop()
 {
-    Player *player = malloc(sizeof(Player));
-    GameData *gameData = malloc(sizeof(GameData));
+    Player *player = instantiate_player();
+    GameData *gameData = instantiate_gameData();
 
     Missile *missileList = NULL;
     Explosion *explosionList = NULL;
@@ -25,6 +25,18 @@ void PollInput()
     EndDrawing();
 }
 
+GameData *instantiate_gameData()
+{
+    GameData *gameData = malloc(sizeof(GameData));
+
+    gameData->DebugMode = DEBUG_MODE;
+    gameData->Gameover = false;
+    gameData->InGameLoop = false;
+    gameData->QuitGame = false;
+
+    return gameData;
+}
+
 void reset_data(Player *player, GameData *gameData, Missile *missiles, Explosion *explosions)
 {
     reset_player_data(player);
@@ -33,8 +45,8 @@ void reset_data(Player *player, GameData *gameData, Missile *missiles, Explosion
     gameData->InGameLoop = false;
     gameData->QuitGame = false;
 
-    free(missiles);
-    free(explosions);
+    realloc(missiles, NULL);
+    realloc(explosions, NULL);
 }
 
 void quit_game(Player *player, GameData *gameData, Missile *missiles, Explosion *explosions)
