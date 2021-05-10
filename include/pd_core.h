@@ -7,7 +7,8 @@
 #define SCREEN_HEIGHT 720
 
 /* ANIMATION DATA */
-typedef struct AnimationHandler {
+typedef struct AnimationHandler
+{
     Texture2D *frames;
     float frameTime;
     int numberOfFrames;
@@ -15,14 +16,16 @@ typedef struct AnimationHandler {
 } AnimationHandler;
 
 /* PLAYER & GAME DATA */
-typedef struct GameData {
+typedef struct GameData
+{
     bool DebugMode;
     bool InGameLoop;
     bool Gameover;
     bool QuitGame;
 } GameData;
 
-typedef struct Player {
+typedef struct Player
+{
     struct AnimationHandler animationHandler;
     double time;
     bool reloading;
@@ -35,7 +38,8 @@ typedef struct Player {
 } Player;
 
 /* MISSILE DATA */
-typedef struct Missile {
+typedef struct Missile
+{
     struct AnimationHandler animationHandler;
     double time;
     Vector2 target;
@@ -46,7 +50,8 @@ typedef struct Missile {
 } Missile;
 
 /* */
-typedef struct Explosion {
+typedef struct Explosion
+{
     Vector2 position;
 } Explosion;
 
